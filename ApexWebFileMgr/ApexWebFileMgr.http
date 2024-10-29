@@ -1,0 +1,6 @@
+@ApexWebFileMgr_HostAddress = http://localhost:5284
+
+GET {{ApexWebFileMgr_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
