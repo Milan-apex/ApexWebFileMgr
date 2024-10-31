@@ -1,9 +1,9 @@
 ﻿using ApexWebFileMgr.core.Models;
+using ApexWebFileMgr.core.Services.DbCallService;
 using ApexWebFileMgr.core.Services.FileMgrService;
 using ApexWebFileMgr.Shared.Enums;
 using ApexWebFileMgr.Shared.Options;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
 namespace ApexWebFileMgr.Controllers
@@ -13,17 +13,20 @@ namespace ApexWebFileMgr.Controllers
     public class FileManagerController : ControllerBase
     {
         private readonly ILogger<FileManagerController> _logger;
-        private readonly DocumentTypeOptionsSettings _documentTypeOptions;
+        //private readonly DocumentTypeOptionsSettings _documentTypeOptions;
         private readonly IFileManagerService _fileMgr;
+        private readonly IDbCallService _dbCall;
 
 
         public FileManagerController(ILogger<FileManagerController> logger,
             IOptions<DocumentTypeOptionsSettings> documentTypeOptions,
-            IFileManagerService fileMgr)
+            IFileManagerService fileMgr,
+            IDbCallService dbCall)
         {
             _logger = logger;
-            _documentTypeOptions = documentTypeOptions.Value; 
+            //_documentTypeOptions = documentTypeOptions.Value; 
             _fileMgr = fileMgr;
+            _dbCall = dbCall;
         }
 
         [HttpGet("Health")]
@@ -47,7 +50,13 @@ namespace ApexWebFileMgr.Controllers
                     return BadRequest("Only .png, .jpeg, .jpg formats are allowed.");
                 }
 
-                string directoryPath = Path.Combine(_documentTypeOptions.Path, DocType);
+                var imageConfiguration = await _dbCall.GetConfigurationAsync();
+                if (imageConfiguration == null || String.IsNullOrEmpty(imageConfiguration.Value))
+                {
+                    return BadRequest("There is server face the error. Please Try After some Time.");
+                }
+
+                string directoryPath = Path.Combine(imageConfiguration.Value, DocType);
                 bool exists = System.IO.Directory.Exists(directoryPath);
 
                 if (!exists)

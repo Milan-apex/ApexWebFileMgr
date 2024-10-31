@@ -5,7 +5,9 @@ VisualStudioVersion = 17.11.35312.102
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApexWebFileMgr", "ApexWebFileMgr\ApexWebFileMgr.csproj", "{7262AE3E-4CB3-4884-A72E-0FF02B3AC610}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApexWebFileMgr.core", "ApexWebFileMgr.core\ApexWebFileMgr.core.csproj", "{2F47732B-077F-4737-A0AE-1D1EB7E238D6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApexWebFileMgr.core", "ApexWebFileMgr.core\ApexWebFileMgr.core.csproj", "{2F47732B-077F-4737-A0AE-1D1EB7E238D6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApexWebFileMgr.DB", "ApexWebFileMgr.DB\ApexWebFileMgr.DB.csproj", "{A59D1A71-0BB5-4FD5-9236-2B8BCC61092E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{2F47732B-077F-4737-A0AE-1D1EB7E238D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F47732B-077F-4737-A0AE-1D1EB7E238D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F47732B-077F-4737-A0AE-1D1EB7E238D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A59D1A71-0BB5-4FD5-9236-2B8BCC61092E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A59D1A71-0BB5-4FD5-9236-2B8BCC61092E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A59D1A71-0BB5-4FD5-9236-2B8BCC61092E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A59D1A71-0BB5-4FD5-9236-2B8BCC61092E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
