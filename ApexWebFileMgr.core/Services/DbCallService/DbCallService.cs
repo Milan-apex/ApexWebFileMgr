@@ -8,8 +8,8 @@ namespace ApexWebFileMgr.core.Services.DbCallService
 {
     public class DbCallService : IDbCallService
     {
-        private readonly IDapper _dapper;
-        public DbCallService(IDapper dapper)
+        private readonly IDapperService _dapper;
+        public DbCallService(IDapperService dapper)
         {
             _dapper = dapper;
         }

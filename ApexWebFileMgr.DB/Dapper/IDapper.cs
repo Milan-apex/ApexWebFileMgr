@@ -4,7 +4,7 @@ using System.Data.Common;
 
 namespace ApexWebFileMgr.DB.Dapper
 {
-    public interface IDapper
+    public interface IDapperService
     {
         DbConnection GetDbconnection();
         Task<IEnumerable<T>> GetAllAsync<T>(string sp, DynamicParameters parms, CommandType commandType = CommandType.StoredProcedure);

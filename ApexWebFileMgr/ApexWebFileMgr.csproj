@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ApexWebFileMgr.core\ApexWebFileMgr.core.csproj" />
+    <ProjectReference Include="..\ApexWebFileMgr.DB\ApexWebFileMgr.DB.csproj" />
   </ItemGroup>
 
 </Project>

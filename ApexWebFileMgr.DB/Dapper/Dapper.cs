@@ -6,13 +6,13 @@ using System.Data.SqlClient;
 
 namespace ApexWebFileMgr.DB.Dapper
 {
-    public class Dapper : IDapper
+    public class DapperService : IDapperService
     {
         private readonly IConfiguration _config;
         private string ConnectionstringName = "DefaultConnection";
 
 
-        public Dapper(IConfiguration config)
+        public DapperService(IConfiguration config)
         {
             _config = config;
         }
