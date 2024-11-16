@@ -68,6 +68,7 @@ namespace ApexWebFileMgr.Controllers
                 if (file.Length > 0)
                 {
                     string fileName = _fileMgr.GenerateFileName(DocType, file.FileName);
+                    //string directoryPath = Path.Combine(env.WebRootPath, "uploads", DocType);
                     string filePath = Path.Combine(directoryPath, fileName);
 
                     using (var fileStream = file.OpenReadStream())
@@ -78,6 +79,7 @@ namespace ApexWebFileMgr.Controllers
                         // Write the compressed image to the file system
                         await System.IO.File.WriteAllBytesAsync(filePath, compressedBytes);
                     }
+                    //var image = System.IO.File.OpenRead(filePath);
 
                     ApplicationUploadFileOut applicationUploadFileOut = new ApplicationUploadFileOut
                     {
@@ -99,6 +101,28 @@ namespace ApexWebFileMgr.Controllers
             {
                 return BadRequest(ex.Message);
             }
+        }   
+
+        [HttpPost("GetFile")]
+        public IActionResult GetImage([FromBody]string filePath)
+        {
+            if (!System.IO.File.Exists(filePath))
+            {
+                return NotFound();
+            }
+            var image = System.IO.File.OpenRead(filePath);
+            return File(image, "image/jpeg"); // or the appropriate MIME type
+        }
+        [HttpPost("GetBase64")]
+        public IActionResult GetImageAsBase64(string filePath)
+        {
+            if (!System.IO.File.Exists(filePath))
+            {
+                return NotFound();
+            }
+            var imageBytes = System.IO.File.ReadAllBytes(filePath);
+            var base64String = Convert.ToBase64String(imageBytes);
+            return Ok(new { base64String });
         }
     }
 }
