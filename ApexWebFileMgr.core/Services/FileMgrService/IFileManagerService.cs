@@ -4,5 +4,6 @@
     {
         string GenerateFileName(string DocType, string fileName);
         byte[] CompressImage(Stream inputImageStream, long desiredSizeKb);
+        byte[] ReadFully(Stream input);
     }
 }

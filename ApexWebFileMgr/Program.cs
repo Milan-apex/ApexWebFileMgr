@@ -1,3 +1,4 @@
+using ApexWebFileMgr;
 using ApexWebFileMgr.core.Services.DbCallService;
 using ApexWebFileMgr.core.Services.FileMgrService;
 using ApexWebFileMgr.DB.Dapper;
@@ -9,7 +10,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.OperationFilter<SwaggerFileUploadOperationFilter>();
+});
 builder.Services.AddScoped<IFileManagerService, FileManagerService>();
 builder.Services.AddScoped<IDbCallService, DbCallService>();
 builder.Services.AddScoped<IDapperService, DapperService>();
